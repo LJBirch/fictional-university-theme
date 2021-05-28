@@ -11,7 +11,11 @@ function pageBanner($args = null)
   }
 
   if (!$args['photo']) {
-    if (get_field('page_banner_background_image')) {
+    if (
+      get_field('page_banner_background_image') and
+      !is_archive() and
+      !is_home()
+    ) {
       $args['photo'] = get_field('page_banner_background_image')['sizes'][
         'pageBanner'
       ];
