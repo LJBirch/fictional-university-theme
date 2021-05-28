@@ -39,7 +39,13 @@
                 Events
               </a>
             </li>
-            <li><a href="#">Campuses</a></li>
+            <li <?php if (get_post_type() == 'campus') {
+              echo 'class="current-menu-item"';
+            } ?>>
+              <a href="<?php echo get_post_type_archive_link(
+                'campus'
+              ); ?>">Campuses</a>
+            </li>
             <li <?php if (get_post_type() == 'post') {
               echo 'class="current-menu-item"';
             } ?>>
