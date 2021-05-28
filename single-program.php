@@ -60,11 +60,18 @@ while (have_posts()) {
         get_the_title() .
         ' Professors</h2>';
 
+      echo '<ul class="professor-cards">';
       while ($relatedProfessors->have_posts()) {
         $relatedProfessors->the_post(); ?>
-        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+        <li class="professor-card__list-item">
+          <a class="professor-card" href="<?php the_permalink(); ?>">
+            <img class="professor-card__image" src="<?php the_post_thumbnail_url(); ?>">
+            <span class="professor-card__name"><?php the_title(); ?></span>
+          </a>
+        </li>
       <?php
       }
+      echo '</ul">';
     }
 
     // Reset post data
@@ -102,7 +109,7 @@ while (have_posts()) {
 
       while ($homepageEvents->have_posts()) {
         $homepageEvents->the_post(); ?>
-        <a class="event-summary">
+        <div class="event-summary">
           <a class="event-summary__date t-center" href="#">
             <span class="event-summary__month"><?php
             $eventDate = new DateTime(get_field('event_date'));
@@ -123,7 +130,7 @@ while (have_posts()) {
               <a href="<?php the_permalink(); ?>" class="nu gray">Learn more</a>
             </p>
           </div>
-        </a>
+        </div>
       <?php
       }
     }
