@@ -85,14 +85,14 @@ function university_files()
     );
     wp_enqueue_script(
       'main-university-js',
-      get_theme_file_uri('/bundled-assets/scripts.df9f91951d1eea9a8e36.js'),
+      get_theme_file_uri('/bundled-assets/scripts.4c318ce534a2098555d8.js'),
       null,
       '1.0',
       true
     );
     wp_enqueue_style(
       'our-main-style',
-      get_theme_file_uri('/bundled-assets/styles.df9f91951d1eea9a8e36.css')
+      get_theme_file_uri('/bundled-assets/styles.4c318ce534a2098555d8.css')
     );
   }
 }
