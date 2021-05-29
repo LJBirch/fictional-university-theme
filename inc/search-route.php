@@ -5,7 +5,7 @@ add_action('rest_api_init', 'universityRegisterSearch');
 function universityRegisterSearch()
 {
   register_rest_route('university/v1', 'search', [
-    'methods' => WP_REST_Server::READABLE,
+    'methods' => WP_REST_SERVER::READABLE,
     'callback' => 'universitySearchResults',
   ]);
 }
@@ -13,7 +13,7 @@ function universityRegisterSearch()
 function universitySearchResults($data)
 {
   $mainQuery = new WP_Query([
-    'post_type' => ['posts', 'page', 'professor', 'program', 'campus', 'event'],
+    'post_type' => ['post', 'page', 'professor', 'program', 'campus', 'event'],
     's' => sanitize_text_field($data['term']),
   ]);
 
@@ -32,6 +32,8 @@ function universitySearchResults($data)
       array_push($results['generalInfo'], [
         'title' => get_the_title(),
         'permalink' => get_the_permalink(),
+        'postType' => get_post_type(),
+        'authorName' => get_the_author(),
       ]);
     }
 
@@ -49,15 +51,15 @@ function universitySearchResults($data)
       ]);
     }
 
-    if (get_post_type() == 'event') {
-      array_push($results['events'], [
+    if (get_post_type() == 'campus') {
+      array_push($results['campuses'], [
         'title' => get_the_title(),
         'permalink' => get_the_permalink(),
       ]);
     }
 
-    if (get_post_type() == 'campus') {
-      array_push($results['professor'], [
+    if (get_post_type() == 'event') {
+      array_push($results['events'], [
         'title' => get_the_title(),
         'permalink' => get_the_permalink(),
       ]);
@@ -66,5 +68,3 @@ function universitySearchResults($data)
 
   return $results;
 }
-
-?>
