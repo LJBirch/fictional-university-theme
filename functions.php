@@ -1,6 +1,7 @@
 <?php
 
 require 'temp-env-vars.php';
+require get_theme_file_path('/inc/search-route.php');
 
 $gmaps_api_key = get_gmaps_api_key();
 

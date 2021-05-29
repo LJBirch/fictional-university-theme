@@ -72,7 +72,7 @@ class Search {
                 (item) =>
                   `<li>
                 <a href="${item.link}">${item.title.rendered}</a> ${
-                    item.authorName ? `by ${item.authorName}` : ''
+                    item.type == 'post' ? `by ${item.authorName}` : ''
                   }
               </li>`
               )
