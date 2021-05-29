@@ -71,7 +71,9 @@ class Search {
               .map(
                 (item) =>
                   `<li>
-                <a href="${item.link}">${item.title.rendered}</a>
+                <a href="${item.link}">${item.title.rendered}</a> ${
+                    item.authorName ? `by ${item.authorName}` : ''
+                  }
               </li>`
               )
               .join('')}
