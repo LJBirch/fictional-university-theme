@@ -60,6 +60,9 @@ class MyNotes {
         thisNote.slideUp();
         console.log('success');
         console.log(response);
+        if (response.userNoteCount < 5) {
+          $('.note-limit-message').removeClass('active');
+        }
       },
       error: (error) => {
         console.log('error!');
@@ -87,6 +90,8 @@ class MyNotes {
       data: ourUpdatedPost,
       success: (response) => {
         this.makeNoteReadOnly(thisNote);
+        console.log('success!');
+        console.log(response);
       },
       error: (error) => {
         console.log('error!');
@@ -126,9 +131,10 @@ class MyNotes {
         console.log('success!');
         console.log(response);
       },
-      error: (error) => {
-        console.log('error!');
-        console.log(error);
+      error: (response) => {
+        if (response.responseText == 'You have reached your note limit.') {
+          $('.note-limit-message').addClass('active');
+        }
       },
     });
   }
