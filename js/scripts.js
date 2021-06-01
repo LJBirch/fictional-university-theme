@@ -12,7 +12,7 @@ var heroSlider = new HeroSlider();
 var googleMap = new GoogleMap();
 var search = new Search();
 
-// Allow new JS and CSS to load in browser without a traditional page refresh
+// Allow new JS and CSS to load in browser without a traditional page refres
 if (module.hot) {
   module.hot.accept();
 }
