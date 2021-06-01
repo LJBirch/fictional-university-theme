@@ -14,7 +14,6 @@ if (have_posts()) {
   while (have_posts()) {
     the_post();
     get_template_part('template-parts/content', get_post_type());
-    print_r(the_post());
   }
   echo paginate_links();
 } else {
